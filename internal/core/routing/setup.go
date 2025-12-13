@@ -78,13 +78,4 @@ func Setup(engine *gin.Engine, httpProxy *proxy.HTTPProxy, cfg *config.Config, m
 		wsProxy.SetupWebSocketProxy(wsGroup, cfg)
 		logger.Info("WebSocket proxy configured successfully")
 	}
-
-	//// 为特定引擎中的动态路由注册空处理器
-	//switch cfg.Routing.Engine {
-	//case "trie", "trie_regexp", "regexp":
-	//	for p := range cfg.Routing.GetHTTPRules() {
-	//		// 空处理器依赖特定 Router 实现中的中间件
-	//		protected.Any(p, func(c *gin.Context) {})
-	//	}
-	//}
 }

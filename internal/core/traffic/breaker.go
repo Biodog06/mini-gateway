@@ -1,6 +1,10 @@
 package traffic
 
 import (
+	context2 "context"
+	"encoding/json"
+	"github.com/DoraZa/mini-gateway/internal/core/health"
+	"github.com/DoraZa/mini-gateway/internal/middleware"
 	"net/http"
 	"regexp"
 	"sync"
@@ -269,9 +273,32 @@ func Breaker() gin.HandlerFunc {
 			span.SetStatus(codes.Error, "Circuit breaker open")
 			span.SetAttributes(attribute.String("breakerState", "open"))
 			observability.BreakerTrips.WithLabelValues(path).Inc()
-			c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Service temporarily unavailable"})
-			c.Abort()
-			return nil // 表示回退已处理错误
+			// 获取 target（和 cache middleware 逻辑一致）
+			target := ""
+			if rules, ok := config.GetConfig().Routing.Rules[path]; ok && len(rules) > 0 {
+				if host, err := health.NormalizeTarget(rules[0]); err == nil {
+					target = host
+				}
+			}
+			ctx, cancel := context2.WithTimeout(context2.Background(), 100*time.Millisecond)
+			defer cancel()
+			if content, found := health.GetGlobalHealthChecker().CheckCache(ctx, c.Request.Method, "fallback:"+middleware.GenerateCacheKey(c), target); found {
+				var cachedResp middleware.CachedResponse
+				if err := json.Unmarshal([]byte(content), &cachedResp); err == nil {
+					for k, values := range cachedResp.Headers {
+						for _, value := range values {
+							c.Writer.Header().Add(k, value)
+						}
+					}
+					c.Data(http.StatusOK, c.Writer.Header().Get("Content-Type"), []byte(cachedResp.Body))
+				}
+				c.Abort()
+				return nil
+			} else {
+				c.JSON(http.StatusServiceUnavailable, gin.H{"error": "Service temporarily unavailable"})
+				c.Abort()
+				return nil // 表示回退已处理错误
+			}
 		})
 
 		// 在滑动窗口中记录请求统计

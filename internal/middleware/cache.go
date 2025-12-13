@@ -2,8 +2,10 @@ package middleware
 
 import (
 	"bytes"
+	"context"
 	"encoding/json"
 	"net/http"
+	"time"
 
 	"github.com/DoraZa/mini-gateway/config"
 	"github.com/DoraZa/mini-gateway/internal/core/health" // 引入 health 包
@@ -19,8 +21,8 @@ type CachedResponse struct {
 	Body       string              `json:"body"`
 }
 
-// 辅助函数（可用）：排序参数，生成规范化的 CacheKey
-func generateCacheKey(c *gin.Context) string {
+// GenerateCacheKey 辅助函数（可用）：排序参数，生成规范化的 CacheKey
+func GenerateCacheKey(c *gin.Context) string {
 	// 获取所有参数
 	params := c.Request.URL.Query()
 	// 这里的 Encode 方法默认会按 Key 字母顺序排序
@@ -41,7 +43,7 @@ func CacheMiddleware() gin.HandlerFunc {
 
 		path := c.Request.URL.Path
 		// RequestURI 包含了 Query String
-		requestURI := generateCacheKey(c)
+		requestURI := GenerateCacheKey(c)
 		method := c.Request.Method
 		rule := config.GetConfig().GetCacheRuleByPath(path)
 
@@ -109,6 +111,14 @@ func CacheMiddleware() gin.HandlerFunc {
 			jsonData, err := json.Marshal(cacheResp)
 			if err == nil {
 				err := health.GetGlobalHealthChecker().SetCache(c.Request.Context(), method, requestURI, string(jsonData), rule.TTL)
+				go func(requestURI string, method string, jsonData []byte, ttl time.Duration) {
+					ctx, cancel := context.WithTimeout(context.Background(), 100*time.Millisecond)
+					defer cancel()
+					err := health.GetGlobalHealthChecker().SetCache(ctx, method, "fallback:"+requestURI, string(jsonData), ttl*200)
+					if err != nil {
+						logger.Warn("Failed to set cache", zap.String("fallback_key", requestURI))
+					}
+				}(requestURI, method, jsonData, rule.TTL)
 				if err != nil {
 					logger.Error("Failed to cache response", zap.Error(err))
 				}
