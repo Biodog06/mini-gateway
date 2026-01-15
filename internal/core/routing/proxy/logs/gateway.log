@@ -1,0 +1,6 @@
+{"level":"info","time":"2026-01-15T11:48:10+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-15T11:48:10+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-15T11:48:10+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}

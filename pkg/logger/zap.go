@@ -2,6 +2,7 @@ package logger
 
 import (
 	"os"
+	"path/filepath"
 	"sync"
 	"time"
 
@@ -106,11 +107,15 @@ func getEncoder() zapcore.Encoder {
 	encoderConfig.MessageKey = "msg"                          // 消息字段改为 "msg"
 	encoderConfig.EncodeLevel = zapcore.LowercaseLevelEncoder // 级别使用小写 (info, error 等)
 	encoderConfig.EncodeCaller = zapcore.ShortCallerEncoder   // 可选：简化调用者信息
-	return zapcore.NewConsoleEncoder(encoderConfig)
+	return zapcore.NewJSONEncoder(encoderConfig)
 }
 
 // getWriteSyncer 配置日志输出（文件 + 控制台）
 func getWriteSyncer(cfg Config) zapcore.WriteSyncer {
+	if dir := filepath.Dir(cfg.FilePath); dir != "" && dir != "." {
+		_ = os.MkdirAll(dir, 0o755)
+	}
+
 	// 配置日志文件滚动
 	fileWriter := &lumberjack.Logger{
 		Filename:   cfg.FilePath,

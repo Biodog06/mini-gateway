@@ -55,9 +55,39 @@ services:
     volumes:
       - mg-jaeger-data:/data
 
+  mg-elasticsearch:
+    image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
+    container_name: mg-elasticsearch
+    network_mode: host
+    environment:
+      - discovery.type=single-node
+      - xpack.security.enabled=false
+      - xpack.security.http.ssl.enabled=false
+      - ES_JAVA_OPTS=-Xms512m -Xmx512m
+      - http.port=9200
+    volumes:
+      - mg-elasticsearch-data:/usr/share/elasticsearch/data
+
+  mg-filebeat:
+    image: docker.elastic.co/beats/filebeat:8.13.4
+    container_name: mg-filebeat
+    user: root
+    network_mode: host
+    volumes:
+      - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
+      - ../../logs:/var/log/mini-gateway:ro
+      - mg-filebeat-data:/usr/share/filebeat/data
+    environment:
+      - ES_HOSTS=["http://127.0.0.1:9200"]
+      - ES_USERNAME=
+      - ES_PASSWORD=
+    command: ["--strict.perms=false"]
+
 volumes:
   mg-consul-data:
   mg-grafana-data:
   mg-redis-data:
   mg-prometheus-data:
   mg-jaeger-data:  # 新增 Jaeger 数据卷
+  mg-filebeat-data:
+  mg-elasticsearch-data:

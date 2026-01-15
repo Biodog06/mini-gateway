@@ -14,7 +14,7 @@ echo "设置 Grafana 配置..."
 
 # 启动 Docker Compose
 echo "启动 Docker Compose 服务..."
-docker-compose -f "$DOCKER_COMPOSE_FILE" up -d
+docker-compose -f "$DOCKER_COMPOSE_FILE" up -d mg-grafana mg-prometheus mg-jaeger
 
 # 等待服务启动并验证
 echo "等待 Grafana 启动并加载配置..."

@@ -19,11 +19,11 @@ import (
 func TestSetupGRPCProxy_Response(t *testing.T) {
 	// 保存全局变量原始值
 	origNewGRPCClient := newGRPCClient
-	origRegisterHelloServiceHandlerFunc := registerHelloServiceHandlerFunc
+	origHelloRegistrar := serviceRegistry["HelloService"]
 	// 测试结束后恢复
 	defer func() {
 		newGRPCClient = origNewGRPCClient
-		registerHelloServiceHandlerFunc = origRegisterHelloServiceHandlerFunc
+		serviceRegistry["HelloService"] = origHelloRegistrar
 	}()
 
 	// 在测试中覆盖 newGRPCClient，不实际建立 gRPC 连接
@@ -31,10 +31,10 @@ func TestSetupGRPCProxy_Response(t *testing.T) {
 		return nil, nil
 	}
 
-	// 覆盖 registerHelloServiceHandlerFunc，
+	// 覆盖 HelloService 注册逻辑，
 	// 在 mux 上注册的处理器调用 httpResponseModifier 来设置响应头，再写入固定响应体
-	registerHelloServiceHandlerFunc = func(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
-		return mux.HandlePath("GET", "/hello", func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
+	serviceRegistry["HelloService"] = func(ctx context.Context, mux *runtime.ServeMux, conn *grpc.ClientConn) error {
+		return mux.HandlePath("GET", "/api/v2/hello", func(w http.ResponseWriter, req *http.Request, pathParams map[string]string) {
 			// 模拟 gRPC 转发时调用 ForwardResponseOption 设置响应头
 			_ = httpResponseModifier(req.Context(), w, nil)
 			w.WriteHeader(http.StatusOK)
@@ -44,15 +44,13 @@ func TestSetupGRPCProxy_Response(t *testing.T) {
 
 	// 构造测试配置
 	cfg := &config.Config{
-		GRPC: config.GRPCConfig{
-			Prefix: "/grpc",
-		},
 		Routing: config.Routing{
 			Rules: map[string]config.RoutingRules{
-				"/grpc/hello": {
+				"/api/v2/hello": {
 					{
 						Protocol: "grpc",
 						Target:   "dummy-target",
+						ServiceName: "HelloService",
 					},
 				},
 			},
@@ -73,8 +71,7 @@ func TestSetupGRPCProxy_Response(t *testing.T) {
 	ts := httptest.NewServer(router)
 	defer ts.Close()
 
-	// 请求路径为 "/grpc/hello"，内部会剥离前缀转发到 mux 上注册的 "/hello" 处理器
-	reqURL := ts.URL + "/grpc/hello"
+	reqURL := ts.URL + "/api/v2/hello"
 
 	client := &http.Client{Timeout: 5 * time.Second}
 	req, err := http.NewRequest("GET", reqURL, nil)

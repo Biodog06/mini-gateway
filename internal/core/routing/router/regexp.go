@@ -52,7 +52,7 @@ func (rr *RegexpRouter) registerRule(path string) {
 
 // Match 查找与给定路径匹配的路由规则
 func (rr *RegexpRouter) Match(ctx context.Context, path string) (config.RoutingRules, bool) {
-	ctx, span := trieRegexpTracer.Start(ctx, "RegexpRouter.Match",
+	ctx, span := regexpTracer.Start(ctx, "RegexpRouter.Match",
 		trace.WithAttributes(attribute.String("path", path)))
 	defer span.End()
 

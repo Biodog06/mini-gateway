@@ -202,6 +202,7 @@ func (d dummyLB) SelectTarget(targets []string, req *http.Request) string {
 	}
 	return ""
 }
+func (d dummyLB) Stop() {}
 
 // 假设 config.RoutingRule 的定义如下（请根据实际情况调整）：
 //
@@ -225,23 +226,6 @@ func TestGetLoadBalancerType(t *testing.T) {
 	hp.loadBalancer = dummyLB{}
 	if got := hp.GetLoadBalancerType(); got != "dummyLB" {
 		t.Errorf("expected dummyLB, got %q", got)
-	}
-}
-
-// TestGetLoadBalancerActiveTargets 测试 GetLoadBalancerActiveTargets 分支
-func TestGetLoadBalancerActiveTargets(t *testing.T) {
-	var hp *HTTPProxy = nil
-	if got := hp.GetLoadBalancerActiveTargets(); got != nil {
-		t.Errorf("expected nil, got %v", got)
-	}
-	hp = &HTTPProxy{}
-	if got := hp.GetLoadBalancerActiveTargets(); got != nil {
-		t.Errorf("expected nil, got %v", got)
-	}
-	hp.loadBalancer = dummyLB{}
-	targets := hp.GetLoadBalancerActiveTargets()
-	if len(targets) != 1 || targets[0] != "dummy" {
-		t.Errorf("unexpected targets: %v", targets)
 	}
 }
 

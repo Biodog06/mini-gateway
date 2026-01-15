@@ -40,7 +40,7 @@ func newBreakerTestConfig() *config.Config {
 
 // initBreakerTestConfig 初始化测试配置
 func initBreakerTestConfig() {
-	// 如果 config 包没有 SetConfig 方法，请确保在测试中能够正确设置全局配置
+	config.InitTestConfigManager()
 	config.SetConfig(newBreakerTestConfig())
 }
 

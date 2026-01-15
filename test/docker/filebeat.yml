@@ -1,0 +1,31 @@
+filebeat.inputs:
+  - type: filestream
+    id: mini-gateway
+    enabled: true
+    paths:
+      - /var/log/mini-gateway/*.log
+    parsers:
+      - ndjson:
+          target: ""
+          add_error_key: true
+          message_key: msg
+    fields_under_root: true
+    fields:
+      service.name: mini-gateway
+      event.dataset: mini-gateway.log
+
+processors:
+  - add_host_metadata: ~
+  - add_cloud_metadata: ~
+
+output.elasticsearch:
+  hosts: ${ES_HOSTS}
+  username: ${ES_USERNAME}
+  password: ${ES_PASSWORD}
+  index: "mini-gateway-%{+yyyy.MM.dd}"
+
+setup.template.name: "mini-gateway"
+setup.template.pattern: "mini-gateway-*"
+setup.ilm.enabled: false
+
+logging.level: info

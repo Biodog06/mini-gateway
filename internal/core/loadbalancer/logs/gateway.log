@@ -1,0 +1,92 @@
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"warn","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:58","msg":"No targets available for selection"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":1,"totalSlots":160}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":4}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":12}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":320}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":0}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":0}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:48","msg":"No targets available for round-robin selection"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"warn","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/weighted_round_robin.go:87","msg":"No targets available for weighted round-robin selection"}
+{"level":"info","time":"2026-01-15T11:35:29+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"info","time":"2026-01-15T11:44:46+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"warn","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:58","msg":"No targets available for selection"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":1,"totalSlots":160}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":4}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":12}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":320}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":0}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":0}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:48","msg":"No targets available for round-robin selection"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"warn","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/weighted_round_robin.go:87","msg":"No targets available for weighted round-robin selection"}
+{"level":"info","time":"2026-01-15T11:44:47+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"warn","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:58","msg":"No targets available for selection"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":1,"totalSlots":160}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":4}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":12}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":320}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":0}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":0}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:48","msg":"No targets available for round-robin selection"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"warn","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/weighted_round_robin.go:87","msg":"No targets available for weighted round-robin selection"}
+{"level":"info","time":"2026-01-15T11:47:58+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"warn","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:58","msg":"No targets available for selection"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":1,"totalSlots":160}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":4}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":12}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":3,"totalSlots":480}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":160}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":320}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:40","msg":"Ketama load balancer initialized","replicas":0}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/ketame.go:120","msg":"Ketama hash ring rebuilt","nodes":2,"totalSlots":0}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:48","msg":"No targets available for round-robin selection"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}
+{"level":"warn","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/weighted_round_robin.go:87","msg":"No targets available for weighted round-robin selection"}
+{"level":"info","time":"2026-01-15T11:48:51+08:00","caller":"loadbalancer/weighted_round_robin.go:69","msg":"WeightedRoundRobin load balancer initialized","ruleCount":1}

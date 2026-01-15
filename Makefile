@@ -192,10 +192,14 @@ start-envs:
 	@docker-compose -f test/docker/docker-compose.yml up -d mg-redis
 	@echo "Starting Consul..."
 	@docker-compose -f test/docker/docker-compose.yml up -d mg-consul
+	@echo "Starting Elasticsearch..."
+	@docker-compose -f test/docker/docker-compose.yml up -d mg-elasticsearch
 	@echo "Starting monitoring(Grafana|Prometheus|Jaeger)..."
 	chmod +x test/docker/setup_grafana.sh
 	chmod +x test/docker/setup_monitoring.sh
 	@./test/docker/setup_monitoring.sh
+	@echo "Starting Filebeat..."
+	@docker-compose -f test/docker/docker-compose.yml up -d mg-filebeat
 
 # 停止外部依赖服务
 .PHONY: stop-envs
@@ -207,6 +211,8 @@ stop-envs:
 	@docker volume rm -f docker_mg-redis-data
 	@docker volume rm -f docker_mg-prometheus-data
 	@docker volume rm -f docker_mg-jaeger-data
+	@docker volume rm -f docker_mg-filebeat-data
+	@docker volume rm -f docker_mg-elasticsearch-data
 	@echo "外部依赖服务数据卷已删除"
 
 # 显示可访问的 HTTP 链接
