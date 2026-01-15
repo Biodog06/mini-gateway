@@ -5,10 +5,10 @@ global:
 scrape_configs:
   - job_name: 'gateway'
     static_configs:
-      - targets: ['127.0.0.1:8380']  # 假设网关运行在宿主机的 8380 端口
+      - targets: ['host.docker.internal:8380']  # 假设网关运行在宿主机的 8380 端口
     metrics_path: /metrics  # 网关暴露的指标端点
     scrape_interval: 5s  # 更频繁地抓取网关指标
 
   - job_name: 'prometheus'
     static_configs:
-      - targets: ['127.0.0.1:8390']  # Prometheus 自身的指标
+      - targets: ['localhost:8390']  # Prometheus 自身的指标

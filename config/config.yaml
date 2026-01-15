@@ -31,36 +31,31 @@ websocket:
 routing:
   prefix: /api
   rules:
-    /api/v1/order:
+    /v1/order:
     - target: http://127.0.0.1:8382
       weight: 10
       env: ""
       protocol: http
       healthcheckpath: /health
-    /api/v1/user:
+    /v1/user:
     - target: http://127.0.0.1:8381
-      weight: 50
+      weight: 1
       env: stable
       protocol: http
       healthcheckpath: /status
     - target: http://127.0.0.1:8383
-      weight: 25
-      env: canary
+      weight: 1
+      env: stable
       protocol: http
       healthcheckpath: /status
-    - target: http://127.0.0.1:8383
-      weight: 20
-      env: canary
-      protocol: http
-      healthcheckpath: /status
-    /api/v2/hello/*path:
+    /v2/hello/*path:
     - target: 127.0.0.1:8391
       weight: 100
       env: ""
       protocol: grpc
       servicename: "HelloService"
       healthcheckpath: hello.Health
-    /api/v3/hello:
+    /v3/hello:
     - target: 127.0.0.1:8391
       weight: 100
       env: ""

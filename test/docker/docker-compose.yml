@@ -5,16 +5,21 @@ services:
     image: consul:1.15
     container_name: mg-consul
     command: agent -server -bootstrap-expect=1 -ui -client=0.0.0.0 -http-port=8300 -server-port=8754
-    network_mode: host
+    ports:
+      - "8300:8300"
+      - "8500:8500"
+      - "8600:8600"
+      - "8754:8754"
     volumes:
       - mg-consul-data:/consul/data
     environment:
-      - CONSUL_BIND_INTERFACE=eth0  # 根据实际网卡名称调整
+      - CONSUL_BIND_INTERFACE=eth0
 
   mg-grafana:
     image: grafana/grafana:10.2.0
     container_name: mg-grafana
-    network_mode: host
+    ports:
+      - "8350:8350"
     volumes:
       - mg-grafana-data:/var/lib/grafana
       - ./grafana/provisioning:/etc/grafana/provisioning
@@ -28,7 +33,8 @@ services:
   mg-redis:
     image: redis:7.0
     container_name: mg-redis
-    network_mode: host
+    ports:
+      - "8379:8379"
     command: redis-server --port 8379 --requirepass redis123
     volumes:
       - mg-redis-data:/data
@@ -36,10 +42,13 @@ services:
   mg-prometheus:
     image: prom/prometheus:v2.45.0
     container_name: mg-prometheus
-    network_mode: host
+    ports:
+      - "8390:8390"
     command:
       - '--config.file=/etc/prometheus/prometheus.yml'
       - '--web.listen-address=:8390'
+    extra_hosts:
+      - "host.docker.internal:host-gateway"
     volumes:
       - ./prometheus.yml:/etc/prometheus/prometheus.yml
       - mg-prometheus-data:/prometheus
@@ -58,13 +67,14 @@ services:
   mg-elasticsearch:
     image: docker.elastic.co/elasticsearch/elasticsearch:8.13.4
     container_name: mg-elasticsearch
-    network_mode: host
     environment:
       - discovery.type=single-node
       - xpack.security.enabled=false
       - xpack.security.http.ssl.enabled=false
       - ES_JAVA_OPTS=-Xms512m -Xmx512m
       - http.port=9200
+    ports:
+      - "9200:9200"
     volumes:
       - mg-elasticsearch-data:/usr/share/elasticsearch/data
 
@@ -72,16 +82,27 @@ services:
     image: docker.elastic.co/beats/filebeat:8.13.4
     container_name: mg-filebeat
     user: root
-    network_mode: host
     volumes:
       - ./filebeat.yml:/usr/share/filebeat/filebeat.yml:ro
       - ../../logs:/var/log/mini-gateway:ro
       - mg-filebeat-data:/usr/share/filebeat/data
     environment:
-      - ES_HOSTS=["http://127.0.0.1:9200"]
+      - ES_HOSTS=["http://mg-elasticsearch:9200"]
       - ES_USERNAME=
       - ES_PASSWORD=
     command: ["--strict.perms=false"]
+    depends_on:
+      - mg-elasticsearch
+      - mg-kibana
+
+  mg-kibana:
+    image: docker.elastic.co/kibana/kibana:8.13.4
+    container_name: mg-kibana
+    ports:
+      - "5601:5601"
+    environment:
+      - ELASTICSEARCH_HOSTS=http://mg-elasticsearch:9200
+      - SERVER_PORT=5601
 
 volumes:
   mg-consul-data:

@@ -24,6 +24,9 @@ output.elasticsearch:
   password: ${ES_PASSWORD}
   index: "mini-gateway-%{+yyyy.MM.dd}"
 
+setup.kibana:
+  host: "http://mg-kibana:5601"
+
 setup.template.name: "mini-gateway"
 setup.template.pattern: "mini-gateway-*"
 setup.ilm.enabled: false

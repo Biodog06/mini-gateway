@@ -224,10 +224,11 @@ links:
 		echo "Warning: Could not detect external IP, falling back to 127.0.0.1"; \
 	fi; \
 	echo "Accessible HTTP links:"; \
-	echo "  - Jaeger UI: http://$$IP:8330"; \
-	echo "  - Jaeger OTLP HTTP: http://$$IP:8331"; \
-	echo "  - Grafana: http://$$IP:8350/d/gateway-monitoring (login: admin/admin123)"; \
-	echo "  - Prometheus: http://$$IP:8390"
+	echo "  - Jaeger UI: http://$IP:8330"; \
+	echo "  - Jaeger OTLP HTTP: http://$IP:8331"; \
+	echo "  - Grafana: http://$IP:8350/d/gateway-monitoring (login: admin/admin123)"; \
+	echo "  - Prometheus: http://$IP:8390"; \
+	echo "  - Kibana: http://$IP:5601"
 
 # 安装火焰图生成依赖
 .PHONY: install-flamegraph

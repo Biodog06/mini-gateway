@@ -1,7 +1,6 @@
 package proxy
 
 import (
-	"go.opentelemetry.io/otel/propagation"
 	"math/rand"
 	"net/http"
 	"net/http/httputil"
@@ -9,6 +8,8 @@ import (
 	"strings"
 	"sync"
 	"time"
+
+	"go.opentelemetry.io/otel/propagation"
 
 	"github.com/DoraZa/mini-gateway/pkg/util"
 
@@ -411,6 +412,13 @@ func (hp *HTTPProxy) createErrorHandler(target string, span trace.Span) func(htt
 
 // prepareFastHTTPRequest 准备 FastHTTP 请求
 func (hp *HTTPProxy) prepareFastHTTPRequest(c *gin.Context, req *fasthttp.Request, target, env string) {
+	// 如果 target 已经包含 scheme (http:// 或 https://)，则去掉它，或者不重复添加
+	if strings.HasPrefix(target, "http://") {
+		target = strings.TrimPrefix(target, "http://")
+	} else if strings.HasPrefix(target, "https://") {
+		target = strings.TrimPrefix(target, "https://")
+	}
+
 	reqURI := "http://" + target + c.Request.URL.Path
 	if c.Request.URL.RawQuery != "" {
 		reqURI += "?" + c.Request.URL.RawQuery
