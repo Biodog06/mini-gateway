@@ -33,7 +33,8 @@ func InitTracing(cfg *config.Config) func(context.Context) error {
 		logger.Error("Failed to initialize OTLP exporter",
 			zap.String("endpoint", cfg.Observability.Jaeger.Endpoint),
 			zap.Error(err))
-		panic(err) // 致命错误，生产环境建议优雅处理
+		logger.Warn("Tracing will be disabled due to exporter init failure")
+		return func(ctx context.Context) error { return nil }
 	}
 
 	// 根据配置选择采样器
@@ -59,7 +60,8 @@ func InitTracing(cfg *config.Config) func(context.Context) error {
 	if err != nil {
 		logger.Error("Failed to create tracing resource",
 			zap.Error(err))
-		panic(err) // 致命错误，生产环境建议优雅处理
+		logger.Warn("Tracing will be disabled due to resource init failure")
+		return func(ctx context.Context) error { return nil }
 	}
 
 	// 初始化 TracerProvider，包含导出器、资源和采样器

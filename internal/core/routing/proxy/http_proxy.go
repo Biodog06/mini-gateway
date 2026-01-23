@@ -34,6 +34,9 @@ const (
 // httpTracer 为 HTTP 代理初始化追踪器
 var httpTracer = otel.Tracer("proxy:http")
 
+var weightedRandMu sync.Mutex
+var weightedRand = rand.New(rand.NewSource(time.Now().UnixNano()))
+
 // HTTPProxy 管理 HTTP 代理功能
 type HTTPProxy struct {
 	mu                sync.RWMutex
@@ -497,8 +500,9 @@ func WeightedRandomSelect(rules config.RoutingRules) *config.RoutingRule {
 	}
 
 	// 随机选择
-	rand.Seed(time.Now().UnixNano()) // 初始化随机种子
-	randomWeight := rand.Intn(totalWeight)
+	weightedRandMu.Lock()
+	randomWeight := weightedRand.Intn(totalWeight)
+	weightedRandMu.Unlock()
 
 	// 根据权重区间选择目标
 	cumulativeWeight := 0

@@ -4,6 +4,8 @@ import (
 	"context"
 	"fmt"
 	"strconv"
+	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/DoraZa/mini-gateway/config"
@@ -14,23 +16,88 @@ import (
 
 // Client 是全局的 Redis 客户端实例
 var Client *redis.Client
+var redisReady atomic.Bool
+var monitorMu sync.Mutex
+var monitorCancel context.CancelFunc
 
 // Init 初始化 Redis 客户端
 func Init(cfg *config.Config) {
-	Client = redis.NewClient(&redis.Options{
-		Addr:     cfg.Cache.Addr,     // Redis 地址
-		Password: cfg.Cache.Password, // Redis 密码
-		DB:       cfg.Cache.DB,       // Redis 数据库编号
+	client := redis.NewClient(&redis.Options{
+		Addr:            cfg.Cache.Addr,
+		Password:        cfg.Cache.Password,
+		DB:              cfg.Cache.DB,
+		DialTimeout:     800 * time.Millisecond,
+		ReadTimeout:     800 * time.Millisecond,
+		WriteTimeout:    800 * time.Millisecond,
+		PoolTimeout:     800 * time.Millisecond,
+		MaxRetries:      2,
+		MinRetryBackoff: 100 * time.Millisecond,
+		MaxRetryBackoff: 2 * time.Second,
 	})
 
-	// 测试连接
-	ctx := context.Background()
-	_, err := Client.Ping(ctx).Result()
+	Client = client
+
+	ctx, cancel := context.WithTimeout(context.Background(), 800*time.Millisecond)
+	_, err := client.Ping(ctx).Result()
+	cancel()
+
 	if err != nil {
-		logger.Error("Failed to connect to Redis", zap.Error(err), zap.String("addr", cfg.Cache.Addr))
-		panic(err)
+		redisReady.Store(false)
+		logger.Warn("Redis is not reachable, running in degraded mode", zap.Error(err), zap.String("addr", cfg.Cache.Addr))
+	} else {
+		redisReady.Store(true)
+		logger.Info("Redis connected successfully", zap.String("addr", cfg.Cache.Addr))
 	}
-	logger.Info("Redis connected successfully", zap.String("addr", cfg.Cache.Addr))
+
+	monitorMu.Lock()
+	if monitorCancel != nil {
+		monitorCancel()
+	}
+	monitorCtx, cancelMonitor := context.WithCancel(context.Background())
+	monitorCancel = cancelMonitor
+	monitorMu.Unlock()
+
+	go monitorRedis(monitorCtx, cfg.Cache.Addr, client)
+}
+
+func monitorRedis(ctx context.Context, addr string, client *redis.Client) {
+	backoff := 200 * time.Millisecond
+	maxBackoff := 5 * time.Second
+	lastReady := redisReady.Load()
+
+	for {
+		select {
+		case <-ctx.Done():
+			return
+		case <-time.After(backoff):
+		}
+
+		pingCtx, cancel := context.WithTimeout(context.Background(), 800*time.Millisecond)
+		_, err := client.Ping(pingCtx).Result()
+		cancel()
+
+		readyNow := err == nil
+		if readyNow != lastReady {
+			redisReady.Store(readyNow)
+			lastReady = readyNow
+			if readyNow {
+				logger.Info("Redis reconnected successfully", zap.String("addr", addr))
+				backoff = 500 * time.Millisecond
+			} else {
+				logger.Warn("Redis connection lost, running in degraded mode", zap.Error(err), zap.String("addr", addr))
+				backoff = 200 * time.Millisecond
+			}
+		}
+
+		if !readyNow {
+			backoff = backoff * 2
+			if backoff > maxBackoff {
+				backoff = maxBackoff
+			}
+		} else {
+			backoff = 2 * time.Second
+		}
+	}
 }
 
 // GetCacheKey 生成缓存键，基于 HTTP 方法和路径
@@ -40,7 +107,7 @@ func GetCacheKey(method, path string) string {
 
 // CheckCache 检查缓存是否存在并返回内容
 func CheckCache(ctx context.Context, method, path string) (string, bool) {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping cache check")
 		return "", false
 	}
@@ -61,7 +128,7 @@ func CheckCache(ctx context.Context, method, path string) (string, bool) {
 
 // SetCache 设置缓存内容并指定过期时间
 func SetCache(ctx context.Context, method, path, content string, ttl time.Duration) error {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping cache set")
 		return fmt.Errorf("redis client not initialized")
 	}
@@ -80,7 +147,7 @@ func SetCache(ctx context.Context, method, path, content string, ttl time.Durati
 // IncrementRequestCount 增加指定路径的请求计数，返回当前计数。
 // 当计数器为新建时，设置过期时间为当前TTL窗口长度。
 func IncrementRequestCount(ctx context.Context, path string, ttl time.Duration) int64 {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping request count increment")
 		return 0
 	}
@@ -110,7 +177,7 @@ func GetPathReqCountKey(path string) string {
 
 // ClearRequestCount 清除指定路径的请求计数（可选，用于测试或重置）
 func ClearRequestCount(ctx context.Context, path string) error {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping request count clear")
 		return fmt.Errorf("redis client not initialized")
 	}
@@ -133,7 +200,7 @@ type PathCount struct {
 
 // BatchGetPathReqCount 批量获取多个路径的请求计数
 func BatchGetPathReqCount(ctx context.Context, paths []string) ([]PathCount, error) {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping batch request count retrieval")
 		return nil, fmt.Errorf("redis client not initialized")
 	}
@@ -184,7 +251,7 @@ func BatchGetPathReqCount(ctx context.Context, paths []string) ([]PathCount, err
 
 // ClearMethodCount 清除指定方法和路径的请求计数（可选，用于测试或重置）
 func ClearMethodCount(ctx context.Context, method, path string) error {
-	if Client == nil {
+	if Client == nil || !redisReady.Load() {
 		logger.Warn("Redis client not initialized, skipping request count clear")
 		return fmt.Errorf("redis client not initialized")
 	}

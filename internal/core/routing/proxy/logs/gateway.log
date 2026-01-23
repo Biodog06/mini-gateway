@@ -4,3 +4,560 @@
 {"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
 {"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
 {"level":"info","time":"2026-01-15T11:49:01+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"info","time":"2026-01-23T10:54:27+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T10:54:27+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T10:54:27+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"info","time":"2026-01-23T11:01:15+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:01:15+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:01:15+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"info","time":"2026-01-23T11:02:30+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:02:30+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:02:30+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:02:30+08:00","caller":"health/health_checker.go:118","msg":"Redis client not initialized, skipping key cleanup","pattern":"mg:health:stats:*"}
+{"level":"warn","time":"2026-01-23T11:02:30+08:00","caller":"health/health_checker.go:118","msg":"Redis client not initialized, skipping key cleanup","pattern":"mg:cache:*"}
+{"level":"warn","time":"2026-01-23T11:02:30+08:00","caller":"health/health_checker.go:118","msg":"Redis client not initialized, skipping key cleanup","pattern":"mg:cache:req_count:*"}
+{"level":"info","time":"2026-01-23T11:02:30+08:00","caller":"health/health_checker.go:97","msg":"Cleared all existing health stats and cache keys from Redis"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_proxy.go:369","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_proxy.go:153","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:65235","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:03:34+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:65235","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65237"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65239"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:03:34+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_proxy.go:369","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_proxy.go:153","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:65247","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:03:54+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:65247","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65249"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65251"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:03:54+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:65280","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:05:21+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:65280","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65282"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65284"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:05:21+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:65331","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:06:25+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:65331","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65333"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:65335"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:06:25+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:49217","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:08:26+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:49217","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:49219"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:49221"}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:08:26+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:49348","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:11:57+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:49348","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:49350"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:49352"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:11:57+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:50079","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T11:20:46+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:50079","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:50081"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:50083"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T11:20:46+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:57489","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:06:12+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:57489","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:57491"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:57493"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:06:12+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:57501","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:06:13+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:57501","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:57503"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:57505"}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:06:13+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58116","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:12:31+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58116","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58118"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58120"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:12:31+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58387","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:14:40+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58387","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58389"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58391"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:14:40+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58406","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:15:03+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58406","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58408"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58410"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:15:03+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58457","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58457","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58459"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58461"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:16:16+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58546","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58546","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58548"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58550"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:19:35+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58598","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:21:14+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58598","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58600"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58602"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:21:14+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:58709","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T13:25:45+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:58709","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58711"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:58713"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T13:25:45+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/grpc_proxy.go:89","msg":"Successfully registered gRPC service handler","path":"/api/v2/hello","target":"dummy-target"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/grpc_proxy.go:127","msg":"gRPC proxy route configured successfully","path":"/api/v2/hello"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/grpc_proxy.go:164","msg":"Metadata found in request context","metadata":{"request-id":["test-request-id"]}}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"dummy-target","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"example.com:8080"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"localhost:8080"}
+{"level":"error","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:69","msg":"Failed to normalize target address","target":"://invalid","error":"parse \"://invalid\": missing protocol scheme","stacktrace":"github.com/DoraZa/mini-gateway/internal/core/routing/proxy.(*HTTPConnectionPool).GetClient\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool.go:69\ngithub.com/DoraZa/mini-gateway/internal/core/routing/proxy.TestGetClient.func1\n\tC:/Users/songyipeng/Desktop/mini-gateway/internal/core/routing/proxy/http_pool_test.go:92\ntesting.tRunner\n\tC:/Program Files/Go/src/testing/testing.go:1934"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:61","msg":"HTTP connection pool initialized successfully","initializedTargets":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:80","msg":"Dynamically created new HostClient","host":"test.com"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:104","msg":"HTTP connection pool closed"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_proxy.go:372","msg":"No target available for request","path":"/test","env":"stable"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:84","msg":"Initializing health checker service"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:93","msg":"Redis client not initialized, disabling health stats storage and heartbeat"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_proxy.go:156","msg":"Routing HTTP request","path":"/test","target":"http://127.0.0.1:62724","env":"stable","method":"GET"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:533","msg":"Target not found in Redis, unable to update request count","target":"http://127.0.0.1:62724","error":"redis client not initialized"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/http_pool.go:37","msg":"HTTP connection pool disabled in configuration"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"loadbalancer/round_robin.go:30","msg":"RoundRobin load balancer initialized"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:62726"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:37","msg":"WebSocket connection pool initialized","maxIdle":0,"idleTimeout":0}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:74","msg":"Successfully established WebSocket connection","target":"ws://127.0.0.1:62728"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:110","msg":"WebSocket pool cleanup routine stopped"}
+{"level":"info","time":"2026-01-23T14:09:58+08:00","caller":"proxy/websocket_pool.go:98","msg":"WebSocket connection pool closed","closedConnections":0}

@@ -89,7 +89,14 @@ func InitHealthChecker(cfg *config.Config) *HealthChecker {
 		ctx:         context.Background(),
 	}
 
-	// 清空 Redis 中所有健康检查和缓存相关键
+	if cache.Client == nil {
+		logger.Warn("Redis client not initialized, disabling health stats storage and heartbeat")
+		once.Do(func() {
+			globalHealthChecker = checker
+		})
+		return checker
+	}
+
 	err := checker.clearRedisKeys()
 	if err != nil {
 		logger.Error("Failed to clear Redis keys", zap.Error(err))
@@ -114,6 +121,11 @@ func (h *HealthChecker) clearRedisKeys() error {
 		reqCountPrefix + "*",
 	}
 	for _, pattern := range patterns {
+		if cache.Client == nil {
+			logger.Warn("Redis client not initialized, skipping key cleanup",
+				zap.String("pattern", pattern))
+			continue
+		}
 		keys, err := cache.Client.Keys(h.ctx, pattern).Result()
 		if err != nil {
 			return err
@@ -186,6 +198,9 @@ func (h *HealthChecker) RefreshTargets(cfg *config.Config) {
 
 // saveToRedis 保存目标状态到 Redis
 func (h *HealthChecker) saveToRedis(target string, stat *TargetStatus) error {
+	if cache.Client == nil {
+		return fmt.Errorf("redis client not initialized")
+	}
 	key := GetHealthStatsKey(target)
 	data := map[string]interface{}{
 		"rule":                stat.Rule,
@@ -206,6 +221,9 @@ func (h *HealthChecker) saveToRedis(target string, stat *TargetStatus) error {
 
 // loadFromRedis 从 Redis 加载目标状态
 func (h *HealthChecker) loadFromRedis(target string) (*TargetStatus, error) {
+	if cache.Client == nil {
+		return nil, fmt.Errorf("redis client not initialized")
+	}
 	key := GetHealthStatsKey(target)
 	data, err := cache.Client.HGetAll(h.ctx, key).Result()
 	if err != nil {

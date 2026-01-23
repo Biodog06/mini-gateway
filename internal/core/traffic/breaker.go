@@ -1,14 +1,16 @@
 package traffic
 
 import (
+	"bytes"
 	context2 "context"
 	"encoding/json"
-	"github.com/DoraZa/mini-gateway/internal/core/health"
-	"github.com/DoraZa/mini-gateway/internal/middleware"
 	"net/http"
 	"regexp"
 	"sync"
 	"time"
+
+	"github.com/DoraZa/mini-gateway/internal/core/health"
+	"github.com/DoraZa/mini-gateway/internal/middleware"
 
 	"github.com/DoraZa/mini-gateway/config"
 	"github.com/DoraZa/mini-gateway/internal/core/observability"
@@ -25,6 +27,100 @@ import (
 
 // breakerTimeSlidingTracer 为时间滑动窗口熔断器模块初始化追踪器
 var breakerTimeSlidingTracer = otel.Tracer("breaker:time-sliding")
+
+type bufferedResponseWriter struct {
+	gin.ResponseWriter
+	baseHeader  http.Header
+	header      http.Header
+	status      int
+	size        int
+	wroteHeader bool
+	body        bytes.Buffer
+}
+
+func newBufferedResponseWriter(w gin.ResponseWriter) *bufferedResponseWriter {
+	base := cloneHeader(w.Header())
+	return &bufferedResponseWriter{
+		ResponseWriter: w,
+		baseHeader:     base,
+		header:         cloneHeader(base),
+		status:         http.StatusOK,
+	}
+}
+
+func cloneHeader(h http.Header) http.Header {
+	out := make(http.Header, len(h))
+	for k, v := range h {
+		out[k] = append([]string(nil), v...)
+	}
+	return out
+}
+
+func (w *bufferedResponseWriter) Reset() {
+	w.header = cloneHeader(w.baseHeader)
+	w.status = http.StatusOK
+	w.size = 0
+	w.wroteHeader = false
+	w.body.Reset()
+}
+
+func (w *bufferedResponseWriter) Header() http.Header {
+	return w.header
+}
+
+func (w *bufferedResponseWriter) WriteHeader(code int) {
+	w.status = code
+	w.wroteHeader = true
+}
+
+func (w *bufferedResponseWriter) WriteHeaderNow() {
+	if !w.wroteHeader {
+		w.WriteHeader(w.status)
+	}
+}
+
+func (w *bufferedResponseWriter) Write(b []byte) (int, error) {
+	w.WriteHeaderNow()
+	w.body.Write(b)
+	w.size += len(b)
+	return len(b), nil
+}
+
+func (w *bufferedResponseWriter) WriteString(s string) (int, error) {
+	w.WriteHeaderNow()
+	w.body.WriteString(s)
+	w.size += len(s)
+	return len(s), nil
+}
+
+func (w *bufferedResponseWriter) Status() int {
+	return w.status
+}
+
+func (w *bufferedResponseWriter) Size() int {
+	return w.size
+}
+
+func (w *bufferedResponseWriter) Written() bool {
+	return w.wroteHeader
+}
+
+func (w *bufferedResponseWriter) commitTo(dest gin.ResponseWriter) {
+	destHeader := dest.Header()
+	for k := range destHeader {
+		delete(destHeader, k)
+	}
+	for k, v := range w.header {
+		destHeader[k] = append([]string(nil), v...)
+	}
+
+	if w.wroteHeader {
+		dest.WriteHeader(w.status)
+	}
+	if w.body.Len() > 0 {
+		_, _ = dest.Write(w.body.Bytes())
+	}
+}
 
 // RequestStat 捕获单个请求的状态
 type RequestStat struct {
@@ -62,17 +158,20 @@ func (sw *TimeSlidingWindow) cleanup() {
 	ticker := time.NewTicker(1 * time.Second)
 	defer ticker.Stop()
 	for range ticker.C {
-		sw.mutex.Lock()
-		now := time.Now()
-		var validRequests []RequestStat
-		for _, stat := range sw.requests {
-			if now.Sub(stat.Timestamp) <= sw.duration {
-				validRequests = append(validRequests, stat)
-			}
-		}
-		sw.requests = validRequests
-		sw.mutex.Unlock()
+		sw.cleanupExpired(time.Now())
 	}
+}
+
+func (sw *TimeSlidingWindow) cleanupExpired(now time.Time) {
+	sw.mutex.Lock()
+	defer sw.mutex.Unlock()
+	var validRequests []RequestStat
+	for _, stat := range sw.requests {
+		if now.Sub(stat.Timestamp) <= sw.duration {
+			validRequests = append(validRequests, stat)
+		}
+	}
+	sw.requests = validRequests
 }
 
 // ErrorRate 计算窗口内的当前错误率
@@ -192,6 +291,9 @@ func Breaker() gin.HandlerFunc {
 
 	// 为每个路由配置 Hystrix
 	for path, rules := range cfg.Routing.Rules {
+		if len(rules) == 0 {
+			continue
+		}
 		effectiveCfg := CalculateEffectiveBreaker(cfg.Traffic.Breaker, rules[0].Breaker)
 		if effectiveCfg.Enabled {
 			hystrix.ConfigureCommand(path, hystrix.CommandConfig{
@@ -209,7 +311,7 @@ func Breaker() gin.HandlerFunc {
 			Window: NewTimeSlidingWindow(time.Duration(effectiveCfg.WindowDuration) * time.Second),
 		}
 
-		if len(path) > 0 && rules[0].IsRegex == true {
+		if len(path) > 0 && rules[0].IsRegex {
 			pattern := "^" + path + "$"
 			re, _ := regexp.Compile(pattern)
 			entry.Pattern = re
@@ -248,6 +350,10 @@ func Breaker() gin.HandlerFunc {
 		start := time.Now()
 		path := matchedEntry.OriginPath
 
+		origWriter := c.Writer
+		bufWriter := newBufferedResponseWriter(origWriter)
+		c.Writer = bufWriter
+
 		// 在 Hystrix 熔断器中执行请求
 		err := hystrix.Do(path, func() error {
 			c.Next() // 处理下游请求
@@ -266,6 +372,8 @@ func Breaker() gin.HandlerFunc {
 			}
 			return nil
 		}, func(err error) error {
+			bufWriter.Reset()
+
 			// 熔断打开时的回退逻辑
 			logger.Warn("Circuit breaker triggered for route",
 				zap.String("path", path),
@@ -300,6 +408,9 @@ func Breaker() gin.HandlerFunc {
 				return nil // 表示回退已处理错误
 			}
 		})
+
+		c.Writer = origWriter
+		bufWriter.commitTo(origWriter)
 
 		// 在滑动窗口中记录请求统计
 		latency := time.Since(start)

@@ -1,0 +1,22 @@
+{"level":"warn","time":"2026-01-23T13:08:31+08:00","caller":"traffic/breaker.go:277","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:08:31+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:13:01+08:00","caller":"traffic/breaker.go:380","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:13:01+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:15:09+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:15:09+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:16:16+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:19:35+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:21:44+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:21:44+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:23:39+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:23:39+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T13:25:44+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T13:25:44+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T14:09:58+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T14:10:38+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T14:10:38+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}
+{"level":"warn","time":"2026-01-23T14:10:43+08:00","caller":"traffic/breaker.go:378","msg":"Circuit breaker triggered for route","path":"/test","error":"test error"}
+{"level":"warn","time":"2026-01-23T14:10:43+08:00","caller":"health/health_checker.go:274","msg":"Redis client not initialized, skipping cache check"}

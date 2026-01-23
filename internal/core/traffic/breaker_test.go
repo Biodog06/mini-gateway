@@ -32,7 +32,7 @@ func newBreakerTestConfig() *config.Config {
 		},
 		Routing: config.Routing{
 			Rules: map[string]config.RoutingRules{
-				"/test": nil,
+				"/test": {{Target: "http://example.com"}},
 			},
 		},
 	}
@@ -75,8 +75,7 @@ func TestTimeSlidingWindow_Cleanup(t *testing.T) {
 	window.Update(RequestStat{Success: true, Latency: 100 * time.Millisecond, Timestamp: now.Add(-3 * time.Second)})
 	// 添加一个近期的请求统计（当前）
 	window.Update(RequestStat{Success: false, Latency: 200 * time.Millisecond, Timestamp: now})
-	// 等待 2 秒让后台清理协程运行
-	time.Sleep(2 * time.Second)
+	window.cleanupExpired(time.Now())
 	// 此时窗口内仅应保留近期记录，错误率为 1（即失败率 100%）
 	errorRate := window.ErrorRate()
 	assert.Equal(t, 1.0, errorRate, "清理后错误率应反映仅近期失败请求")
@@ -126,7 +125,7 @@ func TestBreakerMiddleware_Fallback(t *testing.T) {
 	router.Use(Breaker())
 	// 模拟处理过程中返回错误
 	router.GET("/test", func(c *gin.Context) {
-		c.AbortWithError(http.StatusInternalServerError, errors.New("test error"))
+		_ = c.AbortWithError(http.StatusInternalServerError, errors.New("test error"))
 	})
 
 	req, _ := http.NewRequest("GET", "/test", nil)
