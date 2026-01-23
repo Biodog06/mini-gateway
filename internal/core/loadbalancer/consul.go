@@ -3,9 +3,10 @@ package loadbalancer
 import (
 	"encoding/json"
 	"fmt"
+
 	//"github.com/spf13/viper"
 	"net/http"
-	"sync"
+	"sync/atomic"
 	"time"
 
 	"github.com/DoraZa/mini-gateway/pkg/logger"
@@ -20,10 +21,9 @@ var consulTracer = otel.Tracer("loadbalancer:consul")
 
 // ConsulBalancer 使用 Consul 实现动态规则更新的负载均衡器
 type ConsulBalancer struct {
-	client *api.Client         // Consul 客户端
-	rules  map[string][]string // 路径到目标列表的映射
-	mu     sync.RWMutex        // 读写锁
-	stopCh chan struct{}       // 停止信号通道
+	client *api.Client   // Consul 客户端
+	rules  atomic.Value  // 路径到目标列表的映射 (map[string][]string)
+	stopCh chan struct{} // 停止信号通道
 }
 
 // NewConsulBalancer 创建并初始化 ConsulBalancer 实例
@@ -37,9 +37,9 @@ func NewConsulBalancer(consulAddr string) (*ConsulBalancer, error) {
 
 	cb := &ConsulBalancer{
 		client: client,
-		rules:  make(map[string][]string),
 		stopCh: make(chan struct{}),
 	}
+	cb.rules.Store(make(map[string][]string))
 
 	//go cb.viperListenRules(consulAddr)
 	go cb.watchRules() // 启动 Consul 规则监听协程
@@ -53,8 +53,8 @@ func (cb *ConsulBalancer) Type() string {
 
 // SelectTarget 根据 Consul 规则或回退逻辑为请求选择目标
 func (cb *ConsulBalancer) SelectTarget(targets []string, req *http.Request) string {
-	cb.mu.RLock()
-	defer cb.mu.RUnlock()
+	// 原子读取配置，无锁高性能
+	rules := cb.rules.Load().(map[string][]string)
 
 	// 开始追踪负载均衡选择过程
 	_, span := consulTracer.Start(req.Context(), "LoadBalancer.Select",
@@ -63,7 +63,7 @@ func (cb *ConsulBalancer) SelectTarget(targets []string, req *http.Request) stri
 	defer span.End()
 
 	path := req.URL.Path
-	if consulTargets, ok := cb.rules[path]; ok && len(consulTargets) > 0 {
+	if consulTargets, ok := rules[path]; ok && len(consulTargets) > 0 {
 		// 如果 Consul 提供了目标列表，则使用
 		count := uint32(len(consulTargets))
 		index := uint32(time.Now().UnixNano()) % count // 基于时间的简单选择
@@ -93,6 +93,8 @@ func (cb *ConsulBalancer) SelectTarget(targets []string, req *http.Request) stri
 // watchRules 从 Consul 持续更新负载均衡规则
 func (cb *ConsulBalancer) watchRules() {
 	var lastIndex uint64
+	retryDelay := 1 * time.Second
+
 	for {
 		select {
 		case <-cb.stopCh:
@@ -107,26 +109,31 @@ func (cb *ConsulBalancer) watchRules() {
 			if err != nil || kv == nil {
 				logger.Error("Failed to retrieve load balancer rules from Consul",
 					zap.Error(err))
-				time.Sleep(5 * time.Second) // 失败后延迟重试
+				time.Sleep(retryDelay) // 失败后延迟重试
+				retryDelay *= 2
+				if retryDelay > 30*time.Second {
+					retryDelay = 30 * time.Second
+				}
 				continue
 			}
+
+			// 成功获取，重置重试间隔
+			retryDelay = 1 * time.Second
 
 			lastIndex = meta.LastIndex
 			var newRules map[string][]string
 			if err := json.Unmarshal(kv.Value, &newRules); err != nil {
 				logger.Error("Failed to unmarshal load balancer rules from Consul",
 					zap.Error(err))
-				time.Sleep(5 * time.Second) // 失败后延迟重试
+				// 解析失败不覆盖旧规则，保持系统可用性（Graceful Degradation）
 				continue
 			}
 
-			cb.mu.Lock()
-			cb.rules = newRules
-			cb.mu.Unlock()
+			// 原子更新配置
+			cb.rules.Store(newRules)
 
 			logger.Info("Successfully updated load balancer rules from Consul",
 				zap.Any("rules", newRules))
-			time.Sleep(1 * time.Second) // 下次轮询前的短暂休眠
 		}
 	}
 }
